@@ -100,3 +100,17 @@
 - **Contexto:** El mojibake CP850 del informe DIFF_ENTREGA se detecto en S49 (con prueba matematica y correccion propuesta), se repitio en la segunda pasada y se reconfirmo en S52; quedo listado como pendiente de decision. El Director ordeno (S53): "No pueden haber errores por lo tanto se corrige y se vuelve a actualizar el repo"
 - **Leccion:** El estandar del Director es cero errores conocidos: un defecto detectado no se archiva como pendiente sin mas; se re-presenta en cada panel hasta que el Director decide, y cuando autoriza, se corrige y se re-entrega de inmediato (la correccion viaja en la siguiente entrega, antes de cualquier otro trabajo)
 - **Aplica cuando:** Cierre de cada sesion con defectos detectados y preparacion de entregas
+
+---
+### L015 -- Un dato, un dueño
+- **Sesion:** v1.4 (meta-proyecto)
+- **Contexto:** La revision integral del ciclo v1.4 encontro que el mismo dato (esquema de repos, flujo del script, composicion del paquete operativo, instrucciones de extraccion) vivia repetido en varios archivos sin regla de sede unica; al cambiar una decision, se actualizaba un archivo y los otros quedaban con la version vieja (origen de V1, V3, V4, V6 y V8)
+- **Leccion:** Todo dato repetido en varios archivos sin regla expresa acaba divergiendo. Cada dato tiene UN archivo sede (proyecto.md: identidad y URLs; entorno.md: flujo de actualizacion; dcepi.md: metodo; premisa/contrato/prompt_arranque: guardrail por triple redaccion) y los demas archivos remiten; ninguna repeticion sin regla expresa que la justifique
+- **Aplica cuando:** Redaccion o modificacion de cualquier archivo de la estrategia y revisiones integrales
+
+---
+### L016 -- Menos pasos manuales del Director, menos errores
+- **Sesion:** v1.4 (meta-proyecto)
+- **Contexto:** El flujo de actualizacion exigia al Director extraer a mano update_estrategia.ps1 del .zip antes de ejecutarlo, con tres instrucciones distintas segun el archivo que se leyera; el Director lo concilio (V6): "solo me vas a entregar la sentencia de powershell para que lo extraiga y lo ejecute; de esta forma el proceso es mas automatico y con menos errores"
+- **Leccion:** Todo paso manual del Director que se pueda automatizar sin perder control se automatiza; las entregas llevan la instruccion canonica unica (sentencia que extrae y ejecuta) y ninguna variante paralela
+- **Aplica cuando:** Diseno de entregas y protocolos de actualizacion
