@@ -82,7 +82,11 @@ La herramienta de recuperacion de contexto es 100% por ficheros y no depende de 
 | 2 | Ejecutar la Recuperacion Espontanea de `premisa_respuesta.md` (en la RAIZ de la estrategia), seccion 3 |
 | 3 | Releer el worklog del proyecto: la cola (ultima entrada + marcador de sesion) y la cabecera de estrategia (bloque de Regla Conductual Minima con la ruta de la premisa) |
 | 4 | Verificar continuidad (worklog_protocolo.md, Fase de Apertura): ultima entrada = sesion anterior a la actual |
-| 5 | Reemitir la frase de control y continuar la tarea desde donde el worklog indica |
+| 5 | Invocar al daemon del proceso contexto_zai para que actualice el contexto vía ampliar_contexto(chat_id_actual) en modo INCREMENTAL: el daemon recupera los intercambios nuevos desde el último timestamp procesado y los enriquece con la cascada W1+W2+W3 (con bucle D7, MAX_ITER=5). Invocar es USO de la API pública del proceso, no reparación: la reparación sigue siendo competencia del Director o del proyecto propietario del proceso. |
+| 6 | Tras la actualización del contexto, leer los 4 archivos de contexto recuperación, en este orden: 03_objetivo_proyecto.md (identidad del proyecto) → 00_estado_actual.md (dónde quedó: última instrucción, tema activo, errores abiertos) → 01_indice_recuperacion.md (mapa de bloques: qué tema está en qué archivo) → 02_decisiones_clave.md (lo ya decidido: no repetir). |
+| 7 | Reemitir la frase de control y continuar la tarea desde donde el worklog indica |
+
+Las filas 5 y 6 viven en espejo exacto en `premisa_respuesta.md` §3 (sincronía NH20 capa 1).
 
 **Sobre la compresion de contexto:** la perdida de contexto por compresion es INVISIBLE para el agente (percibe continuidad, no arranque). El disparador correcto no es "sentir el corte": es NO poder emitir la frase de control, o que el registro del worklog no cuadre. Ante cualquiera de las dos senales, ejecutar esta seccion sin pedir permiso.
 

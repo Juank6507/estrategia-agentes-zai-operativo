@@ -41,7 +41,11 @@ Si la frase de control no se puede emitir, o el contexto aparece roto (worklog q
 3. Leer la seccion "Recuperacion de contexto" de `agent-context/herramientas.md`: ahi esta documentada la herramienta de recuperacion por ficheros y la via de escalado si la recuperacion falla.
 4. Leer el worklog del proyecto y verificar continuidad: la ultima sesion registrada debe ser la anterior a la actual; si el registro no cuadra con lo escrito en sesiones previas, hay perdida -> restaurar desde copia de respaldo y desde el contexto de la sesion (ver worklog_protocolo.md).
 5. Leer tareas_inmediatas.md y el plan/spec vigentes en `meta/`.
-6. Reemitir la frase de control y continuar la tarea desde donde el worklog indica.
+6. Invocar al daemon del proceso contexto_zai para que actualice el contexto vía ampliar_contexto(chat_id_actual) en modo INCREMENTAL: el daemon recupera los intercambios nuevos desde el último timestamp procesado y los enriquece con la cascada W1+W2+W3 (con bucle D7, MAX_ITER=5). Invocar es USO de la API pública del proceso, no reparación: la reparación sigue siendo competencia del Director o del proyecto propietario del proceso.
+7. Tras la actualización del contexto, leer los 4 archivos de contexto recuperación, en este orden: 03_objetivo_proyecto.md (identidad del proyecto) → 00_estado_actual.md (dónde quedó: última instrucción, tema activo, errores abiertos) → 01_indice_recuperacion.md (mapa de bloques: qué tema está en qué archivo) → 02_decisiones_clave.md (lo ya decidido: no repetir).
+8. Reemitir la frase de control y continuar la tarea desde donde el worklog indica.
+
+Los pasos 6 y 7 viven en espejo exacto en `agent-context/herramientas.md` §8 (sincronía NH20 capa 1).
 
 Esta es la UNICA situacion en la que el agente actua sin pedir autorizacion previa (excepcion de NH8): la recuperacion restaura lectura y continuidad; NO toca archivos del proyecto ni ejecuta cambios.
 
